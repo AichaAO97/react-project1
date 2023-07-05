@@ -1,0 +1,18 @@
+.form {
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  background-color: white;
+  max-width: 30rem;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  margin: 2rem auto;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
