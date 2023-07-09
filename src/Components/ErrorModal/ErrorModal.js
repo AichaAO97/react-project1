@@ -16,7 +16,11 @@ function ErrorModal(props) {
   };
 
   return (
-    <div style={{ display: props.display }} className={classes['modal-box']}>
+    <div
+      style={{ display: props.display }}
+      onClick={hideModal}
+      className={classes['modal-box']}
+    >
       <div className={classes.modal}>
         <h1 className={classes.header}> Invalid Input</h1>
 
