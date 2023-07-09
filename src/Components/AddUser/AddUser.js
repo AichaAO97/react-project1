@@ -31,6 +31,13 @@ function AddUser(props) {
         };
       });
       props.updateFunction(userInput);
+      setUserInput((prevUser) => {
+        return {
+          userName: '',
+          age: '',
+          key: +prevUser['key'],
+        };
+      });
     }
   };
 
