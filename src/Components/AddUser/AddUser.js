@@ -16,7 +16,7 @@ function AddUser(props) {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (!userInput.userName && !userInput.age) {
+    if (userInput.userName.trim().length === 0 || !userInput.age) {
       setErrorMessage('no-input');
       setDisplay('block');
     } else if (userInput.age < 0) {
