@@ -7,13 +7,21 @@ import ErrorModal from './../ErrorModal/ErrorModal';
 function AddUser(props) {
   const [userInput, setUserInput] = useState({ key: 0, userName: '', age: '' });
   const [errorMessage, setErrorMessage] = useState('');
+  const [display, setDisplay] = useState('');
+
+  const displayErrorHandler = (state) => {
+    setDisplay(state);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
     if (!userInput.userName && !userInput.age) {
       setErrorMessage('no-input');
+      setDisplay('block');
     } else if (userInput.age < 0) {
       setErrorMessage('invalid-age');
+      setDisplay('block');
     } else {
       setErrorMessage('');
       setUserInput((prevUser) => {
@@ -39,8 +47,11 @@ function AddUser(props) {
     <div>
       <form onSubmit={submitHandler} className={classes.form}>
         <p>
-          <label className={classes.label}> Username</label>
+          <label htmlFor="userName" className={classes.label}>
+            Username
+          </label>
           <input
+            id="userName"
             onChange={(event) => {
               inputChangeHandler('userName', event.target.value);
             }}
@@ -49,8 +60,11 @@ function AddUser(props) {
           />
         </p>
         <p>
-          <label className={classes.label}>Age (Years)</label>
+          <label htmlFor="age" className={classes.label}>
+            Age (Years)
+          </label>
           <input
+            id="age"
             onChange={(event) => {
               inputChangeHandler('age', event.target.value);
             }}
@@ -59,10 +73,16 @@ function AddUser(props) {
           />
         </p>
 
-        <Button text="Add User" />
+        <Button type="submit" text="Add User" />
       </form>
 
-      {errorMessage && <ErrorModal error={errorMessage} />}
+      {errorMessage && (
+        <ErrorModal
+          displayHandler={displayErrorHandler}
+          display={display}
+          error={errorMessage}
+        />
+      )}
     </div>
   );
 }

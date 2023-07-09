@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import classes from './ErrorModal.module.css';
 import Button from '../Button/Button';
 
@@ -10,14 +11,18 @@ function ErrorModal(props) {
     message = 'Please enter a valid age ( > 0)';
   }
 
+  const hideModal = () => {
+    props.displayHandler('none');
+  };
+
   return (
-    <div className={classes['modal-box']}>
+    <div style={{ display: props.display }} className={classes['modal-box']}>
       <div className={classes.modal}>
         <h1 className={classes.header}> Invalid Input</h1>
 
         <p className={classes.message}> {message} </p>
         <div className={classes.button}>
-          <Button text="Okay" />
+          <Button onClick={hideModal} text="Okay" />
         </div>
       </div>
     </div>
